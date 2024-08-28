@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: emt-nginx
+spec:
+  rules:
+  - host: emt.todd003.rnd.gic.ericsson.se
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: emtangular
+          servicePort: 80
+      - path: /deployments
+        backend:
+          serviceName: emtangular
+          servicePort: 80
+      - path: /sessions
+        backend:
+          serviceName: emtangular
+          servicePort: 80
+      - path: /whats-new
+        backend:
+          serviceName: emtangular
+          servicePort: 80
+      - path: /help-docs
+        backend:
+          serviceName: emthelpdocs
+          servicePort: 80
+      - path: /.cdt/
+        backend:
+          serviceName: emthelpdocs
+          servicePort: 80
+      - path: /api/
+        backend:
+          serviceName: emtexpress
+          servicePort: 80
+      - path: /api-docs/
+        backend:
+          serviceName: emtswagger
+          servicePort: 80

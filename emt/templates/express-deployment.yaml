@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    emt.service: {{ .Values.emtexpress.service }}
+  name: {{ .Values.emtexpress.service }}
+spec:
+  template:
+    metadata:
+      labels:
+        emt.service: {{ .Values.emtexpress.service }}
+    spec:
+      restartPolicy: Always
+      containers:
+      - env:
+        - name: NODE_ENV
+          value: {{ .Values.emtexpress.env.name }}
+        image: {{ .Values.emtexpress.image }}
+        name: {{ .Values.emtexpress.service }}

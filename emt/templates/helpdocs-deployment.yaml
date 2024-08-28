@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    emt.service: {{ .Values.emthelpdocs.service }}
+  name: {{ .Values.emthelpdocs.service }}
+spec:
+  template:
+    metadata:
+      labels:
+        emt.service: {{ .Values.emthelpdocs.service }}
+    spec:
+      containers:
+      - image: {{ .Values.emthelpdocs.image }}
+        name: {{ .Values.emthelpdocs.service }}

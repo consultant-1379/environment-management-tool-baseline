@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    emt.service: database
+  name: database
+spec:
+  template:
+    metadata:
+      labels:
+        emt.service: database
+    spec:
+      containers:
+      - image: mongo:3.6.2
+        name: database
+        ports:
+        - containerPort: 27017

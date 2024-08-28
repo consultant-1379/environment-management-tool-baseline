@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    emt.service: {{ .Values.emtswagger.service }}
+  name: {{ .Values.emtswagger.service }}
+spec:
+  template:
+    metadata:
+      labels:
+        emt.service: {{ .Values.emtswagger.service }}
+    spec:
+      containers:
+      - image: {{ .Values.emtswagger.image }}
+        name: {{ .Values.emtswagger.service }}

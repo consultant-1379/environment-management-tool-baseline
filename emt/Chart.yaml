@@ -1,0 +1,8 @@
+apiVersion: v1
+name: emt
+version: 0.1.0
+description: A Helm chart for Environment Management Tool
+home: https://confluence-nam.lmera.ericsson.se/display/ERSD/Environment+Management+Tool
+maintainers:
+  - name: Thunderbee
+    email: PDLENMCOUN@pdl.internal.ericsson.com

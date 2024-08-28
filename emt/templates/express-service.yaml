@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    emt.service: {{ .Values.emtexpress.service }}
+  name: {{ .Values.emtexpress.service }}
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    emt.service: {{ .Values.emtexpress.service }}

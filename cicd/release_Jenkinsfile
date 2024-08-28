@@ -1,0 +1,15 @@
+node {
+  def remote = [:]
+  remote.name = 'cicd_slave'
+  remote.host = params.CICD_SLAVE
+  remote.user = params.USERNAME
+  remote.password = params.PASSWORD
+  remote.allowAnyHosts = true
+
+    stage('Add Helm Repo') {
+        sshCommand remote: remote, command: "cd " + env.WORKSPACE + " && helm package emt --version " + params.CHART_VERSION + ""
+    }
+    stage('Get latest chart updates') {
+        sshCommand remote: remote, command: "cd " + env.WORKSPACE + " && curl -uthunderbee:AP6R1g3favas6ZueM858MzThimMpCULBCKMqzU -T emt-" + params.CHART_VERSION + ".tgz https://arm.epk.ericsson.se/artifactory/proj-emt-helm-local/emt-" + params.CHART_VERSION + ".tgz"
+    }
+}

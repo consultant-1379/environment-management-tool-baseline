@@ -1,0 +1,34 @@
+serviceAccounts:
+  emtangular:
+    create: true
+  emtexpress:
+    create: true
+  emthelpdocs:
+    create: true
+  emtswagger:
+    create: true  
+
+emtangular:
+  enabled: true
+  env:
+    name:
+  image: armdocker.rnd.ericsson.se/proj_openstack_tooling/emt_client:latest
+  service: emtangular
+
+emtexpress:
+  enabled: true
+  env:
+    name:
+      PROD
+  image: armdocker.rnd.ericsson.se/proj_openstack_tooling/emt_server:latest
+  service: emtexpress
+
+emthelpdocs:
+  enabled: true
+  image: armdocker.rnd.ericsson.se/proj_openstack_tooling/emt_helpdocs:latest
+  service: emthelpdocs
+
+emtswagger:
+  enabled: true
+  image: armdocker.rnd.ericsson.se/proj_openstack_tooling/emt_apidocs:latest
+  service: emtswagger

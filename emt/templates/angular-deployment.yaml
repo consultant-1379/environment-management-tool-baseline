@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    emt.service: {{ .Values.emtangular.service }}
+  name: {{ .Values.emtangular.service }}
+spec:
+  template:
+    metadata:
+      labels:
+        emt.service: {{ .Values.emtangular.service }}
+    spec:
+      containers:
+      - image: {{ .Values.emtangular.image }}
+        name: {{ .Values.emtangular.service }}
+{{- if .Values.emtangular.env.name }}
+        env:
+        - name: NODE_ENV
+          value: {{ .Values.emtangular.env.name }}
+{{- end }}
